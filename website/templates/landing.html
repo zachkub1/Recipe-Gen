@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <h1>I'm Hungry AI</h1>
+                </div>
+            </nav>
+        </header>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Unleash the Culinary Magic of AI</h2>
+                <p>
+                  At I'm Hungry AI, we believe that cooking should be a delightful adventure, not a daunting task. Our state-of-the-art AI recipe generator is here to transform your kitchen experience, 
+                  bringing creativity, ease, and joy to every meal you prepare.</p>
+                <a href="{{ url_for('auth.login') }}" class="btn">LOGIN</a>
+                <a href="{{ url_for('auth.sign_up') }}" class="btn">SIGN UP</a>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='bckgrnd.jpeg') }}" alt="Healthy Food">
+            </div>
+        </section>
+        <section class="features">
+            <div class="feature">
+                <img src="{{ url_for('static', filename='time-saving-icon.png') }}" alt="Time saving icon">
+                <h3>Time saving</h3>
+                <p>Recipes generated within 1 minute!</p>
+            </div>
+            <div class="feature">
+                <img src="{{ url_for('static', filename='customizable-icon.png') }}" alt="Customizable icon">
+                <h3>Customizable</h3>
+                <p>Meals to suit any preference!</p>
+            </div>
+            <div class="feature">
+                <img src="{{ url_for('static', filename='health-conscious-icon.png') }}" alt="Health conscious icon">
+                <h3>Health-Conscious</h3>
+                <p>Can meet your every health need!</p>
+            </div>
+            <div class="feature">
+                <img src="{{ url_for('static', filename='efficiency-icon.png') }}" alt="Efficiency icon">
+                <h3>Convenience</h3>
+                <p>Cook smarter, not harder, with AI assistance!</p>
+            </div>
+        </section>
+        <div class = "container2">
+            <section class="description">
+                <h2>EFFORTLESSLY PLAN MEALS</h2>
+                <p>Say goodbye to meal planning stress and hello to easy, personalized meal planning and customization with I'm Hungry AI.</p>
+                <div class="points">
+                    <div class="point">
+                        <h3>1. Ingredient-based recipes</h3>
+                        <p>Discover delicious recipes based on ingredients you have on hand.</p>
+                    </div>
+                    <div class="point">
+                        <h3>2. AI-assisted cooking</h3>
+                        <p>Cook like a pro with our AI-powered assistant. Get customized recipe instructions to satisfy all hunger needs.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='landing.js') }}"></script>
+</body>
+</html>
