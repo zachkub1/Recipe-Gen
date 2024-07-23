@@ -3,6 +3,10 @@ from flask_login import login_required, current_user
 from . import db
 from .models import Recipe
 import google.generativeai as genai
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 views = Blueprint('views', __name__)
 
@@ -37,7 +41,7 @@ def generate_recipe():
     max_fats = float(request.form.get('max_fats')) if request.form.get('max_fats') else 0.0
 
     # Generate the recipe
-    api_key = 'AIzaSyBklnEi0DjnO3gMGkgKYUbrWRJphMZH9Ac'  # Replace with your API key
+    api_key = os.getenv('Gemini-Api')  
     generated_recipe = generate_recipe_api(
         ingredients, dietary_restrictions, num_people, min_calories, max_calories, 
         min_protein, max_protein, min_carbs, max_carbs, min_fats, max_fats
@@ -51,7 +55,7 @@ def generate_recipe():
     return jsonify({'recipe': generated_recipe})
 
 def generate_recipe_api(ingredients, dietary_restrictions, num_people, min_calories, max_calories, min_protein, max_protein, min_carbs, max_carbs, min_fats, max_fats):
-    api_key = 'AIzaSyBklnEi0DjnO3gMGkgKYUbrWRJphMZH9Ac'
+    api_key = os.getenv('Gemini-Api')  
     try:
         genai.configure(api_key=api_key)
         model = genai.GenerativeModel('gemini-pro')
