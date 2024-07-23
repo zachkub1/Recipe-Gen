@@ -1,7 +1,7 @@
 document.getElementById('toggle-sidebar').addEventListener('click', function() {
     var sidebar = document.getElementById('sidebar');
     if (sidebar.style.left === '0px') {
-        sidebar.style.left = '-250px';
+        sidebar.style.left = '-300px';
     } else {
         sidebar.style.left = '0px';
     }

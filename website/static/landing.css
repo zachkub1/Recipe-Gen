@@ -6,8 +6,7 @@ body {
 }
 
 .container {
-  max-width: auto;
-  max-height: auto;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -40,6 +39,7 @@ nav a {
 
 .hero {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding: 40px 20px;
@@ -48,11 +48,11 @@ nav a {
 }
 
 .hero-content {
-  max-width: 50%;
+  flex: 1 1 45%;
 }
 
 .hero-content h2 {
-  font-size: 48px;
+  font-size: 36px;
   margin: 0;
   color: #000000;
 }
@@ -69,30 +69,31 @@ nav a {
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 5px;
+  margin: 5px 0;
 }
 
 .hero-image img {
   max-width: 100%;
   border-radius: 10px;
-  scale: 0.75;
-  background: linear-gradient(135deg, #f1ffea 50%, #4CAF50 50%);
 }
 
 .hero-image {
-  max-width: 50%;
+  flex: 1 1 45%;
+  text-align: center;
 }
 
 .features {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 20px 0;
-  position: relative;
 }
 
 .feature {
   text-align: center;
-  width: 23%;
+  flex: 1 1 45%;
   background-color: #f1ffea;
+  margin: 10px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -100,31 +101,6 @@ nav a {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: relative;
-  top: -200px; 
-  opacity: 0; 
-  transition: top 1s ease-out, opacity 1s ease-out;
-}
-
-.feature.fall {
-  top: 0;
-  opacity: 1; 
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-15px);
-  }
-  60% {
-    transform: translateY(-10px);
-  }
-}
-
-.feature:hover {
-  animation: bounce 1s;
 }
 
 .feature img {
@@ -137,7 +113,6 @@ nav a {
   font-size: 20px;
   margin-bottom: 10px;
 }
-
 
 .description {
   text-align: center;
@@ -157,11 +132,12 @@ nav a {
 
 .points {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
 .point {
-  max-width: 45%;
+  flex: 1 1 45%;
   text-align: left;
 }
 
@@ -173,4 +149,34 @@ nav a {
 
 .point p {
   color: #000000;
+}
+
+@media (max-width: 768px) {
+  .hero-content h2 {
+    font-size: 28px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-image {
+    margin-top: 20px;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+
+  .feature {
+    flex: 1 1 100%;
+  }
+
+  .points {
+    flex-direction: column;
+  }
+
+  .point {
+    flex: 1 1 100%;
+  }
 }
