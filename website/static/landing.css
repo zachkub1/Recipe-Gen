@@ -49,6 +49,7 @@ nav a {
 
 .hero-content {
   flex: 1 1 45%;
+  
 }
 
 .hero-content h2 {
@@ -60,6 +61,7 @@ nav a {
 .hero-content p {
   color: #000000;
   margin: 20px 0;
+  width: 50%;
 }
 
 .btn {

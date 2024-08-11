@@ -1,48 +1,41 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from os import path
 from flask_login import LoginManager
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
 
 def create_app():
     app = Flask(__name__, static_url_path='/static')
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
-    register_blueprints(app)
-    configure_login_manager(app)
-    initialize_database(app)
-
-    return app
-
-def register_blueprints(app):
     from .views import views
     from .auth import auth
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
-def configure_login_manager(app):
+    from .models import User
+    
+    with app.app_context():
+        db.create_all()
+
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
     @login_manager.user_loader
-    def load_user(user_id):
-        from .models import User
-        return User.query.get(int(user_id))
+    def load_user(id):
+        return User.query.get(int(id))
 
-def initialize_database(app):
-    with app.app_context():
-        if not database_exists(DB_NAME):
-            db.create_all()
-            print('Created Database!')
+    return app
 
-def database_exists(database_name):
-    return os.path.exists(f'website/{database_name}')
+
+
+def create_database(app):
+    if not path.exists('website/' + DB_NAME):
+        db.create_all(app=app)
+        print('Created Database!')
